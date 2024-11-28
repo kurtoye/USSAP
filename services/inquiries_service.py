@@ -12,6 +12,7 @@ inquiries_bp = Blueprint('inquiries', __name__)
 @inquiries_bp.route('/', methods=['POST'])
 def submit_inquiry():
     data = request.json
+    print(f"Received data: {data}")
     if not data or "student_id" not in data or "message" not in data:
         return jsonify({"error": "Missing student_id or message"}), 400
 
