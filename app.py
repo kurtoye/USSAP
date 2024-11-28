@@ -3,14 +3,13 @@ from services.inquiries_service import inquiries_bp
 from services.requests_service import requests_bp
 # from google.cloud import firestore  # Import Firestore SDK
 
+db = firestore.Client()
+
 # Initialize Flask app
 app = Flask(__name__)
 
-# Reference to collections in Firestore
-inquiries_collection = db.collection("inquiries")
-requests_collection = db.collection("requests")
 
-#changed 
+# Register Blueprints 
 app.register_blueprint(inquiries_bp, url_prefix="/inquiries")
 app.register_blueprint(requests_bp, url_prefix="/requests")
 
