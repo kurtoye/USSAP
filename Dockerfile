@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Define environment variable for the app
-ENV FLASK_APP=newapp.py
+ENV FLASK_APP=app.py
 
 # Run the application
 CMD ["flask", "run", "--host", "0.0.0.0", "--port", "8080"]
