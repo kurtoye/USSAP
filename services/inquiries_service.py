@@ -57,6 +57,15 @@ def submit_inquiry():
     inquiry_ref = db.collection('inquiries').add(inquiry_data)
     return jsonify({"id": inquiry_ref[1].id, "message": "Inquiry submitted"}), 201
 
+# Get Inquiry Status
+@inquiries_bp.route('/<inquiry_id>', methods=['GET'])
+def get_inquiry_status(inquiry_id):
+    inquiry = db.collection('inquiries').document(inquiry_id).get()
+    if inquiry.exists:
+        return jsonify({"id": inquiry.id, **inquiry.to_dict()}), 200
+    return jsonify({"error": "Inquiry not found"}), 404
+
+
 # Get All Inquiries (Admin)
 @inquiries_bp.route('/admin', methods=['GET'])
 def get_all_inquiries():
