@@ -14,7 +14,7 @@ requests_collection = db.collection("requests")
 # Root Route
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({"message": "Hello, Flask is running with Firestore"})
+    return jsonify({"message": "Hello, Flask is running with Firestore provisionally"})
 
 # Example POST Endpoint
 @app.route('/submit', methods=['POST'])
