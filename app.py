@@ -16,7 +16,11 @@ app.register_blueprint(requests_bp, url_prefix="/requests")
 # Root Route
 @app.route('/', methods=['GET'])
 def home():
+<<<<<<< HEAD
     return {"message": "Welcome to the University Student Support API"}
+=======
+    return jsonify({"message": "Hello, Flask is running with Firestore provisionally"})
+>>>>>>> 473f8e2fcb236b6b92c1fba83b220230d6582a5b
 
 
 if __name__ == '__main__':
