@@ -5,28 +5,23 @@ from datetime import datetime
 # Initialize Firestore client
 db = firestore.Client()
 
-# Define Blueprint for requests
+# Define Blueprint
 requests_bp = Blueprint('requests', __name__)
 
-# Create a Request (POST)
+# Create Request
 @requests_bp.route('/', methods=['POST'])
 def create_request():
     data = request.json
-    student_id = data.get('student_id')
-    request_type = data.get('type')
-    details = data.get('details')
-
-    if not student_id or not request_type or not details:
-        return jsonify({"error": "Missing required data"}), 400
+    if not data or "student_id" not in data or "type" not in data or "details" not in data:
+        return jsonify({"error": "Missing student_id, type, or details"}), 400
 
     request_data = {
-        "student_id": student_id,
-        "type": request_type,
-        "details": details,
+        "student_id": data["student_id"],
+        "type": data["type"],
+        "details": data["details"],
         "status": "Pending",
         "created_at": datetime.utcnow()
     }
-
     request_ref = db.collection('requests').add(request_data)
     return jsonify({"id": request_ref[1].id, "message": "Request created"}), 201
 
