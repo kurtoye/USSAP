@@ -5,8 +5,8 @@ from services.inquiries_service import inquiries_bp
 from services.requests_service import requests_bp
 
 # Initialize Firebase
-cred = credentials.Certificate('graceful-cider-438814-e0-firebase-adminsdk-8958u-a2289d9f51.json')  # Update the filepath here
-firebase_admin.initialize_app(cred)
+# cred = credentials.Certificate('graceful-cider-438814-e0-firebase-adminsdk-8958u-a2289d9f51.json')  # Update the filepath here
+# firebase_admin.initialize_app(cred)
 
 # Initialize Flask app
 app = Flask(__name__)
