@@ -1,13 +1,7 @@
 from flask import Flask, jsonify
 from services.inquiries_service import inquiries_bp
 from services.requests_service import requests_bp
-
-import firebase_admin
-from firebase_admin import credentials, auth
-
-# Initialse Firebase Authentication
-cred = credentials.Certificate ('graceful-cider-438814-e0-firebase-adminsdk-8958u-a2289d9f51')
-firebase_admin.initialize_app(cred)
+>>>>>>> d1e1399fa0a83d501a93bdceb430038885f91d51
 
 # Initialize Flask app
 app = Flask(__name__)
