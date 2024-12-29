@@ -33,7 +33,7 @@ def get_all_inquiries():
     inquiry_list = [{"id": inq.id, **inq.to_dict()} for inq in inquiries]
     return jsonify(inquiry_list), 200
 
-# Update Inquiry Status (Admin)
+# Update Inquiry Status (Admin) 
 @inquiries_bp.route('/admin/<inquiry_id>', methods=['PUT'])
 def update_inquiry_status(inquiry_id):
     data = request.json
