@@ -13,30 +13,21 @@ inquiries_bp = Blueprint('inquiries', __name__)
 def submit_inquiry():
     try:
         data = request.json
-        print(f"Received data: {data}")  # Debugging: log the received data
-        
-        # Validate the request payload
         if not data or "student_id" not in data or "message" not in data:
             return jsonify({"error": "Missing student_id or message"}), 400
 
-        # Prepare inquiry data with correct types
         inquiry_data = {
-            "student_id": str(data["student_id"]),  # Ensure student_id is stored as a string
-            "message": str(data["message"]),       # Ensure message is stored as a string
-            "status": "Pending",                   # Default status
-            "priority": "Normal",                  # Default priority
-            "created_at": datetime.utcnow()        # Use Firestore's native timestamp type
+            "student_id": str(data["student_id"]),
+            "message": str(data["message"]),
+            "status": "Pending",
+            "priority": "Normal",
+            "created_at": datetime.utcnow()
         }
 
-        # Add the inquiry to Firestore
         inquiry_ref = db.collection('inquiries').add(inquiry_data)
-
-        # Respond with the document ID and success message
         return jsonify({"id": inquiry_ref[1].id, "message": "Inquiry submitted"}), 201
-
     except Exception as e:
-        # Log any exception for debugging purposes
-        print(f"Error submitting inquiry: {e}")
+        print(f"Error in submit_inquiry: {e}")
         return jsonify({"error": "An error occurred while submitting the inquiry"}), 500
 
 # Get All Inquiries (Admin)
@@ -47,7 +38,7 @@ def get_all_inquiries():
         inquiry_list = [{"id": inq.id, **inq.to_dict()} for inq in inquiries]
         return jsonify(inquiry_list), 200
     except Exception as e:
-        print(f"Error fetching inquiries: {e}")
+        print(f"Error in get_all_inquiries: {e}")
         return jsonify({"error": "An error occurred while fetching inquiries"}), 500
 
 # Update Inquiry Status (Admin)
@@ -65,5 +56,39 @@ def update_inquiry_status(inquiry_id):
         inquiry_ref.update({"status": data["status"]})
         return jsonify({"message": "Inquiry status updated"}), 200
     except Exception as e:
-        print(f"Error updating inquiry status: {e}")
+        print(f"Error in update_inquiry_status: {e}")
         return jsonify({"error": "An error occurred while updating inquiry status"}), 500
+
+# Query Inquiries by Student ID
+@inquiries_bp.route('/', methods=['GET'])
+def get_inquiries_by_student_or_status():
+    try:
+        student_id = request.args.get('student_id')
+        status = request.args.get('status')
+
+        query = db.collection('inquiries')
+        if student_id:
+            query = query.where('student_id', '==', student_id)
+        if status:
+            query = query.where('status', '==', status)
+
+        inquiries = query.stream()
+        inquiry_list = [{"id": inq.id, **inq.to_dict()} for inq in inquiries]
+        return jsonify(inquiry_list), 200
+    except Exception as e:
+        print(f"Error in get_inquiries_by_student_or_status: {e}")
+        return jsonify({"error": "An error occurred while querying inquiries"}), 500
+
+# Delete an Inquiry (Admin)
+@inquiries_bp.route('/admin/<inquiry_id>', methods=['DELETE'])
+def delete_inquiry(inquiry_id):
+    try:
+        inquiry_ref = db.collection('inquiries').document(inquiry_id)
+        if not inquiry_ref.get().exists:
+            return jsonify({"error": "Inquiry not found"}), 404
+
+        inquiry_ref.delete()
+        return jsonify({"message": "Inquiry deleted successfully"}), 200
+    except Exception as e:
+        print(f"Error in delete_inquiry: {e}")
+        return jsonify({"error": "An error occurred while deleting the inquiry"}), 500
