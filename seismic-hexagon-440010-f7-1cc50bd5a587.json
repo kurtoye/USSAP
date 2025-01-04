@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "seismic-hexagon-440010-f7",
+  "private_key_id": "1cc50bd5a587c2d48d51f2f4c3778903e2115b0e",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCybkrckI7MMaGe\nlBm/GAnGRlYXH/g99EFu7g0GM94o8EuOCNX2bmO0SahuszaU2a3TD2GWknrJGict\nel6PXaS6oolZR98svZRw4vbhEvKY8Cc3CuiQz7J5tdjL4NYLlQz1YTNbC2eTP9Jt\nw0F5tetIiuWQFDK2WuT73c925jNO4CFUe7oE4U+J8naL7+qzV1Z2dBNvAdyHmc20\nNNJwokb9d8QTRFS8NYzue7IrP2PDbkYfBgzkj6FDIZKKUhWPVkCLs3DE9d0mIZ6p\n9A+lG9lTDdT4Z9Fmepv4k7bRP5phazmBRCTAxW63E5zXmlbzAONE6YXfhOlVqtEK\nobysU95fAgMBAAECggEAA1BO1PFdADZAMl2EbABTZUG27HohhIpd2Ef/fl43yOUS\n4iO6+tqjTvIQI2OANRvsCH+j9lOv3Wkh0ZOCp2S70ccP3X8M343WqXS0uJjptV3b\nEetJuKFtf8WZAyBLYHXpSbKp+3+KgDlZpuCkUt9w69e/oXLszUotE2FFoGr+ekZ+\nC0efMHmwl4lIu/hdFZO9cPZXowsETTDItErDqGChl1q84zxdtnXTgJ9qFEaiSzz2\nt1Czqnrv+0pJk7qoFdJzYdCL02BMxs7JxjVZTVB0yL7Kr3q6izoHcVj+cbzk+tdF\nqfINyC8ZtwWwFCUe7cAy1l5/m1xrpidoFS3CiIB6QQKBgQDWL+lnmXI+BVKc1EsZ\nCxkVUui0kLk4fVRvsUlbLVpkzvYwk13sHRVoK50o0uOVMkk6thZq+I7kNGIjkban\nqUZrynoesDXlRqpevPA5xWrDMMqzcvTzCdXgitmylijg7YbcwZUrVIZox06tBkCW\nDfu6DtpfJxZ0n0IvxaSHrxY7DwKBgQDVQ3GxDLErV3O3hQa01J0oc8Anv/Od35oV\nehSnugkSACnW29stpdAhiP+HNqYNRgBQ2t9k3QMqVjRuOEQQFRxWi5SWerZOt9/T\nsq4HU5EMWJImO1jsKOvHGs9T0SA/s5f5lsBHbh3/pcOJZZgdHjpGce8Ll/DWa6KJ\n9n9Y+K5nsQKBgQCRiEh9XiPjxFYXvZ+xSnsmpAj994ACxBXFNp7zVuOer4lUBC3D\nKxfKiifk/zYnv91GCUc+M9lTccxlArMrRLdWsmM7yts0CEnmyVYoytz594MjXy7U\nnJA4W+ADmkf4XSxPfzFOGcaiFxp8Mk1cJ/Aswb7a/IIjh7q/HvnmP69JPQKBgDGN\nplE5XcFwZJbz9gb2kD3iB3g1BepdFnR/FWWTuJ/SIeam11rX+HCSYK2OaS8UYOZo\ntRe+swmXVj92G3qRLTB+5lvAz7OizgNmtUFGjaGMwwjXKWZWa9KrzBjxssiadmms\nOalfUOEiJzk5vgqmB2xu9NiAyZlJEU91U0ndHslBAoGAf+n4Yjq/F4aumDfzB+WT\ns5s1PICPSJR0mm4Dnq3PHL7kflF9cDV/GijtIxbAP/56jgz4mQ7JF940kjfHO1qT\nNESiX4lW57iqipq3ILYBZjJW6CGAWrBFoOwWzm71hEHdVrnNJgsOPLY7YPBgngLT\ntOfWbvtH0MWFx2uCjerId0o=\n-----END PRIVATE KEY-----\n",
+  "client_email": "ussap-service-account@seismic-hexagon-440010-f7.iam.gserviceaccount.com",
+  "client_id": "106891150482309047211",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/ussap-service-account%40seismic-hexagon-440010-f7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

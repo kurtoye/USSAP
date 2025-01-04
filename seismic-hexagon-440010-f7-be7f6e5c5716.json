@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "seismic-hexagon-440010-f7",
+  "private_key_id": "be7f6e5c571677a36cb02afa29c791464dadd7d7",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCoNakNZoTb03m9\nbZWwtUJe43ai+OSAtKiXt61YYpbmAgk64QZuxvbGhhy6nEhYCpGMFWhL7T7wTNMS\n0kkS31NhiE6f/uVckMU5ctFcjhd2gZqfXzWR0/WRa/IDUyL21Xft9QvGpjbIBFZy\nVK0kUeiewaA8dF2K0704c76jUGZieHqfRkCKjQUPTm3okoHmzy3d4muC/YcsCv2F\nLQQLmqJe/ScCAvI8MbaveQqi9TZziodUJ9xe281XdlY2/yz373mdSKWUDrNoPJ0o\nuaGs+WGWZ5VxYhuZuQW0CvTlDaBfPO5/eYrKS8mnmWzLe2x8fbOiKaTcnlQ5ISXn\nYlqFuZ4BAgMBAAECggEABoeOuGZyYdYjs6a9WM6wdN5/jHP86sIYiUsn/3ZURTlv\nAkoZ5dLzYWFzXAsVA9XlMHrkQY5EEy/oQaLIE2N36SFRbASJAr7b6Q778YvSfVcq\nmWUovzBrJ+n4ywg/IzXGIgaRHnT1S25frLB8yBwl24PIpJAf0XPGtJpJnC1SzB+w\n8LnXR7WYhzwfY2Fjq67QZvDeDgDw0N5/AwrhOl3ggzrSxcgvP7iFS7kSigJuFoW5\nLD3Yf3VYj2YlyEUKdbSByrpns22WvJLedsQT1XqEASy5ibBFaEcQeZXKSahyYz1l\n//WQ7w0mTznt2/8N4p/fODH478vr8b5BcrESa+H9AQKBgQDl+/6nh2Z7G9/JJczO\nssmcfuWkrPuEJt14pnuyvUOfoQjy+1aFkfS2ToaIV5e35fWTHNlKmWyZz1c0oOFb\nChmT1xBjX+sCMGw1hJ8C2gJnpyPXu/yo7RTUjFEK2H+qRab2h200DObG9LuXiUgs\nA++kECl3B8pwRaJZuaROqeTlZQKBgQC7PMLEU/fSuQB+K1kdwxE7dWaJxGX0WPhm\nH7W30nSB01qkq2hLqxEGZFTlzuPsvxw63G/nYDem+pDsnRPijvIf0ENI3KnqKFte\nnwSfePeh0JmbQHwUbjQ3h7MVk4ZPFmMgfIUA8RwErGb7Tcf+Sha7CQaBYGoODDra\nkuw5PzYKbQKBgQDZj8p2VvtWaKcJ1Q1rV+yrc8vwPYftmwqV8QBBtRN8tc0Odz+B\nOfLCZ4STBDHNUOhAU+Em1f7Lfj5j1fF5uxM5LREewQVDW+Vxt1TpUK1HuvCITBiX\nAThcXaTo2qfivuNUggaHX9EM00WG8+JnaQ3RKUzggmk6TlVoBdruY3/alQKBgQCU\nhcQxnDHPU7USYCxWsW+v7Jaj3cjKJPEVgT3STPziJteWG+mlbFMa8OdvS8f8+jPY\ndRfHP8mliMkBCDDH3IAvwDI/T9rwxYaE7jrqjThRgXj3cBV811ZQXjIugVFe1vFW\nya9vadLB2kfuPGrSSc7yGlywr9wwvH7K9xSu7HdfmQKBgEeq5U0VaDEjfiDOdTfo\nfLs6hoyHJE6uDwqvDL5Tfs7pS5gstfcBmse5hZUw2sVjk+oze4WcTAGy1aSbtvYg\nLbZ1DwQcttFQ4YwiV3pnrUinn40kUuj7mYn+c1TzRU+NjkbyjxeeNLL0PGvwups+\nwV/I0WAhZQ/Sjmo/k42qIpF4\n-----END PRIVATE KEY-----\n",
+  "client_email": "mohammed-tarik-islam@seismic-hexagon-440010-f7.iam.gserviceaccount.com",
+  "client_id": "118272392298769613407",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/mohammed-tarik-islam%40seismic-hexagon-440010-f7.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
