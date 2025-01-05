@@ -1,54 +1,54 @@
-const API_BASE_URL = "http://127.0.0.1:8080"; // Update with your backend URL if different
+// Toggle Sections
+function showSection(sectionId) {
+  document.querySelectorAll('section').forEach(section => {
+    section.classList.add('hidden');
+  });
+  document.getElementById(sectionId).classList.remove('hidden');
+}
 
 // Submit Inquiry
-document.getElementById("inquiry-form").addEventListener("submit", async (e) => {
+document.getElementById('inquiry-form').addEventListener('submit', async (e) => {
   e.preventDefault();
-  const studentName = document.getElementById("student-name").value;
-  const inquiryMessage = document.getElementById("inquiry-message").value;
+  const studentId = document.getElementById('student-id').value;
+  const message = document.getElementById('inquiry-message').value;
 
-  try {
-    const response = await fetch(`${API_BASE_URL}/inquiries/submit`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        student: studentName,
-        message: inquiryMessage,
-      }),
-    });
-    const data = await response.json();
-    document.getElementById("inquiry-response").textContent = data.status
-      ? `Inquiry Submitted: ${data.status}`
-      : `Error: ${data.error}`;
-  } catch (error) {
-    document.getElementById("inquiry-response").textContent = `Error: ${error.message}`;
-  }
+  const response = await fetch('/inquiries', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ student_id: studentId, message })
+  });
+
+  const result = await response.json();
+  alert(result.message || 'Inquiry submitted!');
 });
 
-// Load All Requests
-document.getElementById("view-requests").addEventListener("click", async () => {
-  const requestsList = document.getElementById("requests-list");
-  requestsList.innerHTML = ""; // Clear existing list
+// Submit Request
+document.getElementById('request-form').addEventListener('submit', async (e) => {
+  e.preventDefault();
+  const studentId = document.getElementById('student-id-request').value;
+  const type = document.getElementById('request-type').value;
+  const details = document.getElementById('request-details').value;
 
-  try {
-    const response = await fetch(`${API_BASE_URL}/requests`, {
-      method: "GET",
-    });
-    const data = await response.json();
+  const response = await fetch('/requests', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ student_id: studentId, type, details })
+  });
 
-    if (data.length === 0) {
-      requestsList.innerHTML = "<li>No requests found.</li>";
-    } else {
-      data.forEach((request) => {
-        const listItem = document.createElement("li");
-        listItem.textContent = `Request ID: ${request.id}, Student: ${request.name}, Status: ${request.status}`;
-        requestsList.appendChild(listItem);
-      });
-    }
-  } catch (error) {
-    const errorItem = document.createElement("li");
-    errorItem.textContent = `Error: ${error.message}`;
-    requestsList.appendChild(errorItem);
-  }
+  const result = await response.json();
+  alert(result.message || 'Request submitted!');
+});
+
+// Chatbot Interaction
+document.getElementById('chatbot-send').addEventListener('click', async () => {
+  const message = document.getElementById('chatbot-message').value;
+
+  const response = await fetch('/chatbot', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message })
+  });
+
+  const result = await response.json();
+  document.getElementById('chatbot-response').innerText = result.response || 'Error in chatbot!';
 });

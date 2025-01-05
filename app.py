@@ -9,11 +9,18 @@ import os
 # Load environment variables
 load_dotenv()
 
+
+api_key = os.getenv('OPENAI_API_KEY')
+credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+
+# Validate environment variables
+if not api_key:
+    raise ValueError("OPENAI_API_KEY is not set in environment.")
+if not credentials_path or not os.path.exists(credentials_path):
+    raise ValueError("GOOGLE_APPLICATION_CREDENTIALS is missing or invalid.")
+
 # Initialize Flask app
 app = Flask(__name__)
-
-#test
-print("OpenAI API Key:", os.getenv('OPENAI_API_KEY'))
 
 # Register Blueprints
 app.register_blueprint(inquiries_bp, url_prefix='/inquiries')
@@ -33,7 +40,7 @@ def chatbot():
             return jsonify({"error": "Message is required"}), 400
         
         user_message = data['message']
-        response = get_chatbot_response(user_message)
+        response = get_chatbot_response(user_message) or "No response generated."
         
         return jsonify({"response": response}), 200
     except Exception as e:

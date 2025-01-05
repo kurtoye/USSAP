@@ -1,19 +1,7 @@
 from flask import Blueprint, request, jsonify
-from google.cloud import firestore
-from google.oauth2 import service_account
-import os
 from datetime import datetime
+from config.firestore_client import db
 
-# Load credentials
-credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-if not credentials_path:
-    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS not set in environment variables")
-
-credentials = service_account.Credentials.from_service_account_file(credentials_path)
-db = firestore.Client(credentials=credentials)
-
-# Initialize Firestore client
-db = firestore.Client()
 
 # Define Blueprint
 inquiries_bp = Blueprint('inquiries', __name__)
@@ -101,4 +89,5 @@ def delete_inquiry(inquiry_id):
         return jsonify({"message": "Inquiry deleted successfully"}), 200
     except Exception as e:
         print(f"Error in delete_inquiry: {e}")
-        return jsonify({"error": "An error occurred while deleting the inquiry"}), 500
+        return jsonify({"error": f"Failed to process inquiry: {str(e)}"}), 500
+

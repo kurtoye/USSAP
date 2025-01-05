@@ -1,22 +1,18 @@
-from openai import OpenAI
-from google.cloud import firestore
-from google.oauth2 import service_account
+import openai
 import os
-
-# Load credentials
-credentials_path = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
-if not credentials_path:
-    raise EnvironmentError("GOOGLE_APPLICATION_CREDENTIALS not set in environment variables")
-
-credentials = service_account.Credentials.from_service_account_file(credentials_path)
-db = firestore.Client(credentials=credentials)
+from config.firestore_client import db
 
 # Set OpenAI API Key
+openai.api_key = os.getenv('OPENAI_API_KEY')
+
+# Chatbot Response Function
 def get_chatbot_response(user_message: str) -> str:
     try:
-        client = OpenAI(api_key = os.getenv('OPENAI_API_KEY'))  # Create a new client instance
-        
-        response = client.chat.completions.create(
+        # Log API key for debugging (Ensure it's masked if sensitive)
+        print("OpenAI API Key Loaded Successfully.")
+
+        # Make API call to OpenAI
+        response = openai.ChatCompletion.create(
             model="gpt-4",
             messages=[
                 {"role": "system", "content": "You are a helpful chatbot."},
@@ -25,7 +21,21 @@ def get_chatbot_response(user_message: str) -> str:
             max_tokens=150,
             temperature=0.7
         )
-        return response.choices[0].message.content.strip()
+
+        print("Full Response:", response)
+
+        # Validate and extract content
+        if response and "choices" in response and response["choices"]:
+            message = response["choices"][0].get("message", {})
+            content = message.get("content", "").strip()
+            if content:
+                return content
+            
+        print("Unexpected response structure:", response)
+        return "Chatbot could not process your request at this time."
+
     except Exception as e:
         print(f"Chatbot Error: {e}")
-        return "An error occurred while generating the chatbot response."
+        return f"Chatbot Error: {str(e)}"
+
+

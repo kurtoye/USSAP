@@ -1,34 +1,24 @@
-from google.cloud import firestore
-from google.oauth2 import service_account
+import openai
+import os
 
-# Set your service account credentials file path
-CREDENTIALS_PATH = r'C:/Users/t4r1k/..work/Projects/....cloud/USSAP/seismic-hexagon-440010-f7-1cc50bd5a587.json'
+# Explicitly set API key
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
-def test_firestore():
-    try:
-        # Authenticate and initialize Firestore
-        credentials = service_account.Credentials.from_service_account_file(CREDENTIALS_PATH)
-        db = firestore.Client(credentials=credentials)
-        
-        # Test adding a document
-        print("📥 Adding a test document to Firestore...")
-        test_doc_ref = db.collection('test_collection').add({
-            "message": "Hello, Firestore!",
-            "status": "success"
-        })
-        print(f"✅ Document added with ID: {test_doc_ref[1].id}")
-        
-        # Test fetching documents
-        print("\n📤 Fetching documents from 'test_collection'...")
-        docs = db.collection('test_collection').stream()
-        for doc in docs:
-            print(f"{doc.id} => {doc.to_dict()}")
-        
-        print("\n✅ Firestore connection and operations are working correctly!")
+# Print the key for verification (Ensure it's NOT None)
+print("API Key:", openai.api_key)
 
-    except Exception as e:
-        print("❌ An error occurred while testing Firestore:")
-        print(e)
-
-if __name__ == "__main__":
-    test_firestore()
+# Make a basic API call
+try:
+    response = openai.ChatCompletion.create(
+        model="gpt-4",
+        messages=[
+            {"role": "system", "content": "You are a helpful chatbot."},
+            {"role": "user", "content": "Hello, chatbot!"}
+        ],
+        max_tokens=150,
+        temperature=0.7
+    )
+    print(response)
+    print(response.choices[0].message.content.strip())
+except Exception as e:
+    print("API Call Error:", e)

@@ -7,30 +7,60 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>University Support Platform</h1>
+  <header>
+    <h1>University Support Platform</h1>
+    <nav>
+      <button onclick="showSection('inquiry-section')">Inquiries</button>
+      <button onclick="showSection('request-section')">Requests</button>
+      <button onclick="showSection('chatbot-section')">Chatbot</button>
+    </nav>
+  </header>
 
-  <!-- Submit Inquiry Section -->
-  <section>
+  <!-- Inquiry Section -->
+  <section id="inquiry-section" class="hidden">
     <h2>Submit Inquiry</h2>
     <form id="inquiry-form">
-      <label for="student-name">Student Name:</label>
-      <input type="text" id="student-name" required>
+      <label for="student-id">Student ID:</label>
+      <input type="text" id="student-id" required>
       
       <label for="inquiry-message">Message:</label>
       <textarea id="inquiry-message" required></textarea>
       
       <button type="submit">Submit Inquiry</button>
     </form>
-    <p id="inquiry-response"></p>
+    <ul id="inquiries-list"></ul>
   </section>
 
-  <!-- View All Requests Section -->
-  <section>
-    <h2>View All Requests</h2>
-    <button id="view-requests">Load Requests</button>
+  <!-- Request Section -->
+  <section id="request-section" class="hidden">
+    <h2>Submit Request</h2>
+    <form id="request-form">
+      <label for="student-id-request">Student ID:</label>
+      <input type="text" id="student-id-request" required>
+      
+      <label for="request-type">Type:</label>
+      <input type="text" id="request-type" required>
+      
+      <label for="request-details">Details:</label>
+      <textarea id="request-details" required></textarea>
+      
+      <button type="submit">Submit Request</button>
+    </form>
     <ul id="requests-list"></ul>
+  </section>
+
+  <!-- Chatbot Section -->
+  <section id="chatbot-section" class="hidden">
+    <h2>Chatbot</h2>
+    <div>
+      <label for="chatbot-message">Ask the chatbot:</label>
+      <input type="text" id="chatbot-message">
+      <button id="chatbot-send">Send</button>
+    </div>
+    <p id="chatbot-response"></p>
   </section>
 
   <script src="script.js"></script>
 </body>
 </html>
+
